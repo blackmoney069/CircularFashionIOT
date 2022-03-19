@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0
 
 pragma solidity ^0.8.6;
-// The amount of the commodity can be either in Kgs (for unfinished products) or can be in meterSquare(for cloth materials) or in items(for finished products)
 
 
 enum amount_unit{kilograms, meterSquare,items}
+// The amount of the commodity can be either in Kgs (for unfinished products) or can be in meterSquare(for cloth materials) or in items(for finished products)
+
 
 
 struct fashircleTransaction{
@@ -15,11 +16,12 @@ struct fashircleTransaction{
     address sender;
     address reciever;
 }
+// this is a structure defined for a regular fashircle transaction 
 
 contract demoTrans{ 
 
     fashircleTransaction[] public transaction_array;
-    // this is an array that will store all the transanctions done for the 
+    // this is an array that will store all the transanctions done by various companies
     
     function sendItem(bool _sustain_index, amount_unit _unit, uint _quantity, address _reciever, string memory _type) public {
         fashircleTransaction memory new_transaction;

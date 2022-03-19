@@ -8,6 +8,57 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getBlock",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bool",
+								"name": "Sustain_index",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "quantity",
+								"type": "uint256"
+							},
+							{
+								"internalType": "enum amount_unit",
+								"name": "unit",
+								"type": "uint8"
+							},
+							{
+								"internalType": "string",
+								"name": "_type",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "sender",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "reciever",
+								"type": "address"
+							}
+						],
+						"internalType": "struct fashircleTransaction",
+						"name": "_output",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bool",
 						"name": "_sustain_index",
 						"type": "bool"
@@ -36,6 +87,50 @@
 				"name": "sendItem",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transaction_array",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "Sustain_index",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum amount_unit",
+						"name": "unit",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string",
+						"name": "_type",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "reciever",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -67,11 +162,11 @@
 	},
 	"sources": {
 		"fashicircle.sol": {
-			"keccak256": "0x1062a875999ef88876b19a1244c5d8aa9051b543fb674ba8ef123955fc6abf69",
+			"keccak256": "0x402509aa6d3649d29ff3a74a42308a79b10f5e45dc2fbf4afa1745f148a4ee9c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://73db343892ac63762bdbdf341a0fcc0a407c6cf5ee51427035b8f67a793e7c32",
-				"dweb:/ipfs/QmanP1V3pabBD2xzwzTpf3ZKHzX7sYy811KzcyCGgJtgje"
+				"bzz-raw://c79d8b97c6d7bf689a4b57a02846ddc9c63602a83a1276b1bf0ed5cbb21da5c0",
+				"dweb:/ipfs/QmZ4XcjkNbWkzGZXBmf4AjEqhn9BapbdWXW5k8Fxj8uNvi"
 			]
 		}
 	},
