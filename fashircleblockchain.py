@@ -97,17 +97,17 @@ node_address = str(uuid4()).replace('-','')
 
 
 # Creating a Blockchain
-bainschain = Blockchain()
+fashchain = Blockchain()
 
 # Mining a new block
 @app.route('/mine_block', methods = ['GET'])
 def mine_block():
-    previous_block = bainschain.get_previous_block()
+    previous_block = fashchain.get_previous_block()
     previous_proof = previous_block['proof']
-    proof = bainschain.proof_of_work(previous_proof)
-    previous_hash = bainschain.hash(previous_block)
-    bainschain.add_transaction(sender = node_address, reciever = 'bains', amt = 10)
-    block = bainschain.create_block(proof, previous_hash)
+    proof = fashchain.proof_of_work(previous_proof)
+    previous_hash = fashchain.hash(previous_block)
+    fashchain.add_transaction(sender = node_address, reciever = 'bains', amt = 10)
+    block = fashchain.create_block(proof, previous_hash)
     response = {'message': 'Congratulations, you just mined a block!',
                 'index': block['index'],
                 'timestamp': block['timestamp'],
@@ -123,21 +123,21 @@ def add_transaction():
     transaction_keys = {'sender','reciever','amt'}
     if not all(key in json for key in transaction_keys):
         return 'not all elements of the transaction are present', 400
-    index = bainschain.add_transaction(json['sender'], json['reciever'], json['amt'])
+    index = fashchain.add_transaction(json['sender'], json['reciever'], json['amt'])
     response = {'message': f'The transanction is successful and recievd in the block {index}'}
     return jsonify(response), 201
 
 # Getting the full Blockchain
 @app.route('/get_chain', methods = ['GET'])
 def get_chain():
-    response = {'chain': bainschain.chain,
-                'length': len(bainschain.chain)}
+    response = {'chain': fashchain.chain,
+                'length': len(fashchain.chain)}
     return jsonify(response), 200
 
 # Checking if the Blockchain is valid
 @app.route('/is_valid', methods = ['GET'])
 def is_valid():
-    is_valid = bainschain.is_chain_valid(bainschain.chain)
+    is_valid = fashchain.is_chain_valid(fashchain.chain)
     if is_valid:
         response = {'message': 'valid'}
     else:
@@ -153,21 +153,21 @@ def add_nodes():
     if nodes is None:
         return "no node", 401
     for node in nodes:
-        bainschain.add_node(node)
+        fashchain.add_node(node)
     response = {'message':'The nodes are successfully added. The total nodes are :',
-                'total nodes': list(bainschain.nodes)}
+                'total nodes': list(fashchain.nodes)}
     return jsonify(response), 201
 
 #replace chain for consensus
 @app.route('/replace_chain', methods = ['GET'])
 def replace_chain():
-    is_chain_replaced = bainschain.replace_chain()
+    is_chain_replaced = fashchain.replace_chain()
     if is_chain_replaced:
         response = {'message': 'Chain replaced',
-                    'new chain': bainschain.chain}
+                    'new chain': fashchain.chain}
     else:
         response = {'message': 'All Good, nothing changed',
-                    'new chain': bainschain.chain}
+                    'new chain': fashchain.chain}
     return jsonify(response), 200
 
 
