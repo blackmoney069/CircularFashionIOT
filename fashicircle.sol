@@ -17,13 +17,24 @@ struct fashircleTransaction{
 }
 
 contract demoTrans{ 
+
+    fashircleTransaction[] public transaction_array;
+    // this is an array that will store all the transanctions done for the 
     
     function sendItem(bool _sustain_index, amount_unit _unit, uint _quantity, address _reciever, string memory _type) public {
-        fashircleTransaction memory new_transanction;
-        new_transanction._type = _type;
-        new_transanction.reciever = _reciever;
-        new_transanction.quantity = _quantity;
-        new_transanction.unit = _unit;
-        new_transanction.sender = msg.sender; 
+        fashircleTransaction memory new_transaction;
+        new_transaction._type = _type;
+        new_transaction.reciever = _reciever;
+        new_transaction.quantity = _quantity;
+        new_transaction.unit = _unit;
+        new_transaction.sender = msg.sender; 
+        new_transaction.Sustain_index=_sustain_index;
+        transaction_array.push(new_transaction);
     }
-}
+    // This function records the transanction done by the factory/retail store in the form of an array
+
+    function getBlock(uint _index) public view returns(fashircleTransaction memory _output){
+        return transaction_array[_index];
+    }
+    // this function can get the transanction given the index number of the code
+ }
